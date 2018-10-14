@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>CHIP-8 Emulator by windrunner</title>
+</head>
+<body>
+加载ROM：<input type="text" id="rom" value="15 Puzzle [Roger Ivie]"> 速度：<input type="text" id="speed" value="5"> <button id="load">加载</button><br>
+<canvas id="screen" width="320" height="160"></canvas><br>
+ROM: <br>15 Puzzle [Roger Ivie]<br> Airplane<br> Cave<br> snake
+<script src="chip8.js"></script>
+<script>
+    document.getElementById('load').onclick = function () {
+        if (typeof window.c8 !== 'undefined') {
+            window.c8.destroy();
+        }
+
+        window.c8 = new chip8(document.getElementById('screen'),
+            'roms/' + document.getElementById('rom').value + '.ch8',
+            document.getElementById('speed').value);
+    };
+</script>
+</body>
+</html>
